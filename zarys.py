@@ -106,15 +106,15 @@ class BackgroundCircles(object):
         pygame.draw.polygon(win, (255,0,0), [item for item in self.apexes])
 
 
-dupsko = []
-dupsko.append(0.7)
-dupsko.append(0.46)
-dupsko.append(0.3)
-dupsko.append(0.7)
-dupsko.append(0.32)
-dupsko.append(0.69)
+rando = []
+rando.append(0.7)
+rando.append(0.46)
+rando.append(0.3)
+rando.append(0.7)
+rando.append(0.32)
+rando.append(0.69)
 obrazek = BackgroundCircles(win, (250,250,250), (200,200,200))
-obrazek.PolygonCreate(dupsko)
+obrazek.PolygonCreate(rando)
 
 
 while run:

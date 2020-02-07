@@ -1,4 +1,9 @@
 from PIL import Image, ImageDraw
 
-firstImg = Image.open("firstIMG.jpg")
-ImageDraw.Draw(firstImg)
+def main():
+    secondImg = Image.open("secondIMG.jpg")
+    
+    secondImg.save("final.jpg")
+
+
+main()

@@ -24,12 +24,12 @@ while run:
     Create(win, (200, 0, 0), (200, 200, 0))
 
     pygame.display.update()
-    pygame.image.save(win, "firstIMG.jpg")
+    pygame.image.save(win, "firstIMG.png")
 
     Create(win, (50, 0, 0), (200, 200, 200))
 
     pygame.display.update()
-    pygame.image.save(win, "secondIMG.jpg")
+    pygame.image.save(win, "secondIMG.png")
 
     run = False
 

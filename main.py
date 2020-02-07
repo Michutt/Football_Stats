@@ -31,12 +31,10 @@ def main():
     apexes = PolygonCreate(rando)
     draw.polygon(apexes, fill=255)
     firstImg.putalpha(mask)
-    # firstImg.show()
     finalImg = Image.open("secondIMG.png")
-    finalImg.paste(firstImg)
-    finalImg.show()
-    # firstImg.show()
-    finalImg.save("final.png")
+    x = Image.composite(firstImg, finalImg, mask)
+    x.show()
+    x.save("final.png")
 
 
 main()

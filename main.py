@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw
 import math
+import stats
 
 
 def PolygonCreate(listOfStats):
@@ -38,3 +39,4 @@ def main():
 
 
 main()
+print(stats.player.fouls)

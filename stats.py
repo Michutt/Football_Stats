@@ -18,7 +18,7 @@ class Stats(object):
         self.fouls = 0
 
     def FindPlayer(self):
-        url = "http://api.isportsapi.com/sport/football/player/search?api_key=sKyIlFCsHtJfPcjj&name=Ronaldo"
+        url = "http://api.isportsapi.com/sport/football/player/search?api_key=VpZZPQimxVaQAqD8&name=Ronaldo"
 
         response = requests.get(url)
         x = response.json()['data']
@@ -32,7 +32,7 @@ class Stats(object):
 
 
     def FindLeague(self, teamId):
-        url = "http://api.isportsapi.com/sport/football/team?api_key=sKyIlFCsHtJfPcjj&teamId=" + str(teamId)
+        url = "http://api.isportsapi.com/sport/football/team?api_key=VpZZPQimxVaQAqD8&teamId=" + str(teamId)
 
         response = requests.get(url)
         x = response.json()['data']
@@ -45,7 +45,7 @@ class Stats(object):
 
 
     def PlayerStats(self, leagueId, playerInfo):
-        url = "http://api.isportsapi.com/sport/football/playerstats/league?api_key=sKyIlFCsHtJfPcjj&leagueId=" + str(leagueId)
+        url = "http://api.isportsapi.com/sport/football/playerstats/league?api_key=VpZZPQimxVaQAqD8&leagueId=" + str(leagueId)
 
         response = requests.get(url)
         x = response.json()['data']

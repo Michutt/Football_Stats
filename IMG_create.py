@@ -2,7 +2,7 @@ import pygame
 
 
 pygame.init()
-win = pygame.display.set_mode((800, 800))
+win = pygame.display.set_mode((900, 900))
 
 run = True
 
@@ -14,19 +14,24 @@ def Create(win, color1, color2):
             color = color1
         else:
             color = color2
-        pygame.draw.circle(win, color, (400, 400), 30 + i * 30, 30)
+        pygame.draw.circle(win, color, (450, 450), 40 + i * 40, 40)
 
 while run:
+    RED = (255, 0, 0)
+    YELLOW = (255, 244, 79)
+    GREY = (197, 199, 196)
+    WHITE = (240, 240, 240)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
 
-    Create(win, (200, 0, 0), (200, 200, 0))
+    Create(win, RED, YELLOW)
 
     pygame.display.update()
     pygame.image.save(win, "firstIMG.png")
 
-    Create(win, (50, 0, 0), (200, 200, 200))
+    Create(win, GREY, WHITE)
 
     pygame.display.update()
     pygame.image.save(win, "secondIMG.png")

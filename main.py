@@ -1,12 +1,12 @@
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 import math
 import stats
 
 
-def PolygonCreate(listOfStats):
+def polygonCreate(listOfStats):
     apexes = []
-    xMid = 400
-    yMid = 400
+    xMid = 450
+    yMid = 450
     radius = 400
     for i in range(len(listOfStats)):
         pos = i * 360 / len(listOfStats)
@@ -16,27 +16,29 @@ def PolygonCreate(listOfStats):
 
     return apexes
 
+def subtitles(image):
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype("arial.ttf", 16)
+    draw.text((10, 15), "1.0", font=font, fill=(0,0,0))
+
 
 def main():
-    rando = []
-    rando.append(0.7)
-    rando.append(0.46)
-    rando.append(0.3)
-    rando.append(0.7)
-    rando.append(0.32)
-    rando.append(0.69)
+    processedData = []
+    processedData.extend((stats.player.goals, stats.player.shots, stats.player.rating, stats.player.passCount, stats.player.assist, stats.player.fouls))
+    print(processedData)
+
 
     firstImg = Image.open("firstIMG.png")
     mask = Image.new("L", firstImg.size, 0)
     draw = ImageDraw.Draw(mask)
-    apexes = PolygonCreate(rando)
+    apexes = polygonCreate(processedData)
     draw.polygon(apexes, fill=255)
     firstImg.putalpha(mask)
     finalImg = Image.open("secondIMG.png")
     x = Image.composite(firstImg, finalImg, mask)
+    subtitles(x)
     x.show()
     x.save("final.png")
 
 
 main()
-print(stats.player.fouls)

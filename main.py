@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 import math
-# import stats
+import stats
 
 
 def polygonCreate(listOfStats):
@@ -58,9 +58,9 @@ def categories(image, len):
 def main():
     processedData = []
     #dane z API
-    # processedData.extend((stats.player.goals, stats.player.shots, stats.player.rating, stats.player.passCount, stats.player.assist, stats.player.fouls))
+    processedData.extend((stats.player.goals, stats.player.shots, stats.player.rating, stats.player.passCount, stats.player.assist, stats.player.fouls))
     #dane gdyby API nie działało (np. jak teraz :[)
-    processedData.extend((0.4,0.5,0.3,0.36,0.62,0.40))
+    # processedData.extend((0.4,0.5,0.3,0.36,0.62,0.40))
 
     firstImg = Image.open("firstIMG.png")
     mask = Image.new("L", firstImg.size, 0)

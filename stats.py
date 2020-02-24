@@ -5,8 +5,7 @@ import requests
 class Stats(object):
     def __init__(self):
         self.stats = {}
-        self.playerName = ""
-        self.teamName = ""
+        self.playerName = "Dybala" #searched player (only Serie A and Primera Division) :(
         self.goals = 0
         self.matches = 0
         self.shots = 0
@@ -16,9 +15,12 @@ class Stats(object):
         self.passSuccess = 0
         self.assist = 0
         self.fouls = 0
+        self.key = "VpZZPQimxVaQAqD8" #key to access API,
+        # you can generate it by taking free trial here:
+        # https://www.isportsapi.com
 
     def FindPlayer(self):
-        url = "http://api.isportsapi.com/sport/football/player/search?api_key=VpZZPQimxVaQAqD8&name=Ronaldo"
+        url = "http://api.isportsapi.com/sport/football/player/search?api_key={}&name={}".format(self.key, self.playerName)
 
         response = requests.get(url)
         x = response.json()['data']
@@ -32,7 +34,7 @@ class Stats(object):
 
 
     def FindLeague(self, teamId):
-        url = "http://api.isportsapi.com/sport/football/team?api_key=VpZZPQimxVaQAqD8&teamId=" + str(teamId)
+        url = "http://api.isportsapi.com/sport/football/team?api_key={}&teamId=".format(self.key) + str(teamId)
 
         response = requests.get(url)
         x = response.json()['data']
@@ -45,10 +47,11 @@ class Stats(object):
 
 
     def PlayerStats(self, leagueId, playerInfo):
-        url = "http://api.isportsapi.com/sport/football/playerstats/league?api_key=VpZZPQimxVaQAqD8&leagueId=" + str(leagueId)
+        url = "http://api.isportsapi.com/sport/football/playerstats/league?api_key={}&leagueId=".format(self.key) + str(leagueId)
 
         response = requests.get(url)
         x = response.json()['data']
+        print(x)
         for item in x:
             playerId = item['playerId']
             if playerId == playerInfo:
@@ -74,10 +77,8 @@ def dataProcessing(player):
     player.fouls = player.fouls / player.matches
 
 
-
 player = Stats()
 playerInfo = player.FindPlayer()
 leagueId = player.FindLeague(playerInfo[0])
 player.PlayerStats(leagueId, playerInfo[1])
 dataProcessing(player)
-xd = 3213
